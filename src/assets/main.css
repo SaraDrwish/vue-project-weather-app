@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+#app {
+  margin:2%;
+  padding: 2%;
+  text-align: center;
+  background-color: rgb(189, 224, 255);
+  color: rgb(145, 111, 145);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
