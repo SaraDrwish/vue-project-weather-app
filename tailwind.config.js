@@ -3,8 +3,8 @@
   theme: {
     extend: {
       colors: {
-        "weather-primary": "#ds4845",
-        "weather-secondary": "#jfdjfdkk"
+        "weather-primary": "#4b5d6d",
+        "weather-secondary": "#916f91"
       }
     },
     fontFamily: {
