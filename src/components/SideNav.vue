@@ -7,8 +7,8 @@
         <p class="text-2xl">the local weather </p>
       </div>
     </RouterLink>
-    <div class="flex gap-4 flex-1 justify-end">
-      <i class="fa-solid fa-circle-info
+    <div  class="flex gap-4 flex-1 justify-end">
+      <i  @click="toggleModal"  class="fa-solid fa-circle-info
        text-xl hover:text-weather-secondary duration-150
        cursor-pointer" > 
       </i>
@@ -18,8 +18,23 @@
       </i>
     </div>
 
-    <BaseModal>
-      <h1 class="text-weather-primary ">Hello From Model</h1>
+    <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
+       
+      <div class="text-weather-primary">
+        <h2 class="text-xl mb-2">About</h2>
+        <p>Lorem ipsum dolor sit amet io debitis voluptatibus reprehenderi</p>
+        <h3 class="text-xl mb-2 ">How it works</h3>
+        <ol class="list-decimal list-inside m-2 ">
+          <li>search for your sity ............</li>
+          <li>select for your sity ............</li>
+          <li>track the city by clicking on + icon </li>
+        </ol>
+        <h3 class="text-xl mb-2 ">removing a city </h3>
+        <p>Lorem ipsum dolor sit
+           consectetur adipisicing
+            amet consectetur adipisic. </p>
+      </div>
+
     </BaseModal>
 
     </nav>
@@ -29,4 +44,11 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import BaseModal from "../components/BaseModal.vue"
+import { ref } from 'vue';
+
+const modalActive = ref(null);
+const toggleModal = () => {
+  modalActive.value = ! modalActive.value
+}
+
 </script>
