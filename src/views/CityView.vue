@@ -3,7 +3,7 @@
     <Suspense>
        <AsyncCityViwe />
        <template #fallback>
-        <p>loading</p>
+        <p class="text-white flex justify-center m-4 p-4 text-2xl "> loading ... </p>
        </template>
     </Suspense>
   </div>
