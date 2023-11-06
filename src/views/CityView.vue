@@ -1,11 +1,15 @@
 <template>
   <div>
-    <h2>city</h2>
-
+    <Suspense>
+       <AsyncCityViwe />
+       <template #fallback>
+        <p>loading</p>
+       </template>
+    </Suspense>
   </div>
 </template>
 
 <script setup>
-
+import AsyncCityViwe from "../components/AsyncCityViwe.vue"
 </script>
  
