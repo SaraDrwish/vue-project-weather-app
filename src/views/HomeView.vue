@@ -7,9 +7,9 @@
        @input="getSearchResults"
        placeholder="search for a city "
        class="py-2 px-1 bg-transparent w-full border-b
-        focus:outline-none focus:shadow-[0px-2px-0px-0px-#004E71] focus:bg-red " >
+        focus:outline-none focus:shadow-[0px-2px-0px-0px-#004E71] bg-weather-primary " >
         <ul 
-        class="absolute bg-red text-white w-full shadow-md py- px-1 top-[66px]"
+        class="absolute bg-weather-primary text-white w-full shadow-md py-2 px-1 top-[66px]"
         v-if="mapboxSearchResults">  
           <p v-if="searchError">something is goming wrong </p>
           <p v-if="!serverError && mapboxSearchResults.length === 0" > no results match your query  </p>
@@ -23,6 +23,16 @@
           </template>
         </ul>
     </div>
+
+    <div class="flex flex-col gap-4">
+       <Suspense>
+           <CityList />
+           <template #fallback>
+             <p>Loading ......... </p>
+           </template>
+       </Suspense>
+    </div>
+
   </main>
 </template>
 
@@ -31,7 +41,7 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import axios from "axios";
-
+import CityList from "../components/CityList.vue"
 const router = useRouter();
 
 const prevewCity = (searchResult) => {

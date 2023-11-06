@@ -133,7 +133,7 @@ const getWeatherData = async () => {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude=part&appid=ad546a042738f95641d2d2e5575652d3&units=imperial`
     );
 
-    //cal current data & time
+    //cal current weather //  data & time
     
     const localOffset = new Date().getTimezoneOffset() * 60000
     const utc = weatherData.data.current.dt * 1000 + localOffset
