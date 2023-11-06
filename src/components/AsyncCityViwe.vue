@@ -94,22 +94,14 @@
        class="flex items-center">
 
        <p class="flex-1">
-         <!-- {{ 
+         {{ 
            new Date(day.dt * 1000).toLocaleDateString(
             "en-us",
             {
               weekly:"long"
             }
            )
-         }}  -->
-         {{
-           new Date(day.dt * 1000).toLocaleDateString(
-             "en-us",
-             {
-               weekday: "long"
-             }
-           )
-         }}
+         }} 
        </p>
        <img class="w-[50px] h-[50px] object-cover "
         :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="icon" 
@@ -123,7 +115,6 @@
 
      </div>
    </div>
-
 
   </div>
 </template>
@@ -151,21 +142,10 @@ const getWeatherData = async () => {
 
     // call hourly weather offset
 
-    //   weatherData.data.hourly.array.forEach((hour) => {
-    //   const utc = hour.dt * 1000 + localOffset
-    //   hour.currentTime = utc  + 1000 * weatherData.data.timezone_offset
-    // });
-
-//     weatherData.data.hourly.forEach((hour) => {
-//   const utc = hour.dt * 1000 + localOffset;
-//   hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
-    // });
-
     weatherData.data.hourly.forEach((hour) => {
       const utc = hour.dt * 1000 + localOffset;
       hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
-  
 
      return weatherData.data
     
