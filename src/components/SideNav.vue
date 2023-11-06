@@ -1,14 +1,14 @@
 <template>
-   <header class=" sticky top-0 bg-weather-primary shadow-lg">
-    <nav class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6 uppercase">
+   <header class="sticky top-0 bg-weather-primary shadow-lg">
+    <nav class="container flex flex-col sm:flex-row items-center gap-2 text-white py-3 uppercase">
     <RouterLink :to="{name:'home'}">
-      <div class="flex items-center gap-3 ">
+      <div class="flex items-center gap-2 ">
         <i class="fa-solid fa-sun text-2xl "></i>
         <p class="text-2xl">the local weather </p>
       </div>
     </RouterLink>
-    <div  class="flex gap-4 flex-1 justify-end">
-      <i  @click="toggleModal"  class="fa-solid fa-circle-info
+    <div class="flex gap-4 flex-1 justify-end">
+      <i @click="toggleModal" class="fa-solid fa-circle-info
        text-xl hover:text-weather-secondary duration-150
        cursor-pointer" > 
       </i>
@@ -20,7 +20,7 @@
       </i>
     </div>
 
-    <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
+     <BaseModal2 :modalActive="modalActive" @close-modal="toggleModal" />
        
       <div class="text-weather-primary">
         <h2 class="text-xl mb-2">About</h2>
@@ -37,7 +37,7 @@
             amet consectetur adipisic. </p>
       </div>
 
-    </BaseModal>
+    <BaseModal2 />
 
     </nav>
    </header>
@@ -45,7 +45,7 @@
 
 <script setup>
 import { RouterLink , useRoute, useRouter } from 'vue-router';
-import BaseModal from "../components/BaseModal.vue"
+import BaseModal2 from "../components/BaseModal2.vue"
 import { ref } from 'vue';
 import {uid} from "uid"
 
@@ -73,8 +73,9 @@ const addCity = () => {
 
   savedCities.value.push(locationObject)
   localStorage.setItem('savedCities', JSON.stringify(savedCities.value))
-  let query = Object.assign({}, route.query)
-  query.preview
+  let query = Object.assign({}, route.query);
+  delete query.preview;
+  query.id = locationObject.id;
   router.replace({query})
 }
 

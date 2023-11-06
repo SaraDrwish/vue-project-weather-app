@@ -3,9 +3,9 @@
     <Transition name="modal-outer">
       <div v-show="modalActive" class="absolute w-full bg-gray bg-opacity-30 h-screen top-0 left-0 flex justify-center px-9 ">
       <Transition name="model-inner">
-          <div v-if="modalActive" class="p-4 bg-white self-start mt-32 max-w-screen-md ">
+          <div v-if="modalActive" class="p-2 bg-white self-start mt-28 max-w-screen-md ">
               <slot />
-              <button @click="$emit('close-modal')" class="text-white mt-8 bg-weather-primary py-2 px-6 "> Close </button>
+              <button @click="$emit('close-modal')" class="text-white mt-6 bg-weather-primary py-2 px-3 "> Close </button>
           </div>
         </Transition>
       </div>
@@ -36,8 +36,6 @@ defineProps({
  }
 
 
-
-
  .modal-inner-enter-active {
   transition: all 0.3s cubic-bezier(0.25,0.02,0.19,1.02) 0.15s ;
 }
@@ -52,8 +50,6 @@ defineProps({
  
   transform: scale(0.8);
  }
-
-
 
 
 </style>

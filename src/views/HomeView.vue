@@ -1,7 +1,7 @@
 
 <template>
   <main class="container text-white">
-     <div class="p-4 m-6 relative">
+     <div class="p-2 m-3 relative">
       <input type="text"
        v-model="searchQuery"
        @input="getSearchResults"

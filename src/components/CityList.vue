@@ -3,7 +3,7 @@
       <CityCard :city="city" @click="goCityViwe(city)" />
   </div>
 
-  <p v-if="savedCities.length === 0 " class="  capitalize p-4 mx-8 " >
+  <p v-if="savedCities.length === 0 " class="capitalize p-4 mx-8 " >
     no location added yet 
   </p>
 
@@ -50,7 +50,7 @@ const goCityViwe = (city) => {
   router.push({
     name: "cityViwe",
     params: { state: city.state, city: city.city },
-    query:{lat:city.coords.lat , lng: city.coords.lng },
+    query:{ id: city.id , lat:city.coords.lat , lng: city.coords.lng },
   })
 }
   
