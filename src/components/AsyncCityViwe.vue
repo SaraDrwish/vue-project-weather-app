@@ -9,7 +9,7 @@
     curently preveiwing city ,  click + .
     </div>
 
-<!-- weather overvew --> 
+  <!-- weather overvew --> 
 
   <div class="flex flex-col items-center text-white py-12 ">
     <h2 class="text-2xl mb-12 ">{{ route.params.city }}</h2>
@@ -85,7 +85,7 @@
 
    <hr class="border border-opacity-10 border-white w-full ">
 
-<!-- weekly weather -->
+   <!-- weekly weather -->
 
    <div class="max-w-screen-md p-2 my-12 w-full">
      <div class="text-white mx-8">
@@ -94,14 +94,22 @@
        class="flex items-center">
 
        <p class="flex-1">
-         {{ 
+         <!-- {{ 
            new Date(day.dt * 1000).toLocaleDateString(
             "en-us",
             {
               weekly:"long"
             }
            )
-         }} 
+         }}  -->
+         {{
+           new Date(day.dt * 1000).toLocaleDateString(
+             "en-us",
+             {
+               weekday: "long"
+             }
+           )
+         }}
        </p>
        <img class="w-[50px] h-[50px] object-cover "
         :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="icon" 
@@ -110,7 +118,7 @@
           <p > H :{{ Math.round(day.temp.max) }} </p>
           <p >L: {{ Math.round(day.temp.min) }} </p>
         </div>
-      
+        
       </div>
 
      </div>
@@ -129,16 +137,13 @@ const route = useRoute();
  
 const getWeatherData = async () => {
   try {
-  //   const weatherData = await axios.get(`
-  // https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lng}
-  // &exclude={part}&appid=ad546a042738f95641d2d2e5575652d3&units=imperial`);
 
     const weatherData = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude=part&appid=ad546a042738f95641d2d2e5575652d3&units=imperial`
     );
 
-
     //cal current data & time
+    
     const localOffset = new Date().getTimezoneOffset() * 60000
     const utc = weatherData.data.current.dt * 1000 + localOffset
 
@@ -146,10 +151,19 @@ const getWeatherData = async () => {
 
     // call hourly weather offset
 
-      weatherData.data.hourly.array.forEach((hour) => {
-      const utc = hour.dt * 1000 + localOffset
-      hour.currentTime = utc  + 1000 * weatherData.data.timezone_offset
-      
+    //   weatherData.data.hourly.array.forEach((hour) => {
+    //   const utc = hour.dt * 1000 + localOffset
+    //   hour.currentTime = utc  + 1000 * weatherData.data.timezone_offset
+    // });
+
+//     weatherData.data.hourly.forEach((hour) => {
+//   const utc = hour.dt * 1000 + localOffset;
+//   hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
+    // });
+
+    weatherData.data.hourly.forEach((hour) => {
+      const utc = hour.dt * 1000 + localOffset;
+      hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
   
 
