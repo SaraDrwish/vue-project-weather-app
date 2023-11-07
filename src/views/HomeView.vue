@@ -28,7 +28,8 @@
        <Suspense>
            <CityList />
            <template #fallback>
-             <p>Loading ......... </p>
+             <!-- <p>Loading ......... </p> -->
+             <CityCardSkeltn />
            </template>
        </Suspense>
     </div>
@@ -40,8 +41,11 @@
 
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import CityCardSkeltn from "../components/CityCardSkeltn.vue"
+
 import axios from "axios";
 import CityList from "../components/CityList.vue"
+
 const router = useRouter();
 
 const prevewCity = (searchResult) => {
